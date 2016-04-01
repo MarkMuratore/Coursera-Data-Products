@@ -47,4 +47,4 @@ shinyUI(
 
 The working application can be found at: https://guido.shinyapps.io/Project/
 
-The ui.R and server.R files can be found at: 
+The ui.R and server.R files can be found at: https://github.com/MarkMuratore/Coursera-Data-Products
