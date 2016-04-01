@@ -1,0 +1,50 @@
+---
+title: "Child Height Predictor"
+runtime: shiny
+output: html_document
+---
+
+This document describes the Child Height Predictor created for the Coursera Data Products course, part of the Data Science Specialization. I chose to keep my app simple in accordance with guidelines of this course. 
+
+
+## Inputs and Outputs
+
+My Child Height Predictor app is fairly simple. It takes as input the height of both parents and then performs a calculation to produce the output, a prediction for both a boy and girl child of those parents. The prediction funtion used is a fairly common predictor tool:
+
+Girl predicted height: (mother height + father height - 5) / 2  
+Boy predicted height: (mother height + father height + 5) / 2
+
+The ui.R file produces the following predictor application:
+
+```{r, echo=FALSE}
+library(shiny)
+
+shinyUI(
+  pageWithSidebar(
+    # Application title
+    headerPanel("Child Height Predictor"),
+    sidebarPanel(
+      numericInput('mom', 'Enter height for mother (in.)', 70, min = 60, max = 72, step = 0.5
+      ),
+      numericInput('dad', 'Enter height for father (in.)', 75, min = 66, max = 84, step = 0.5),
+      
+      submitButton('Submit')
+    ),
+    mainPanel(
+      h3('Results of prediction'),
+      h4('Height of Mother'),
+      verbatimTextOutput("input$mom"),
+      h4('Height of Father'),
+      verbatimTextOutput("input$dad"),
+      
+      h4('Predicted height for a boy: '),
+      verbatimTextOutput("predictBoy"),
+      h4('Predicted height for a girl: '),
+      verbatimTextOutput("predictGirl")
+    ) )
+)
+```
+
+The working application can be found at: https://guido.shinyapps.io/Project/
+
+The ui.R and server.R files can be found at: 
